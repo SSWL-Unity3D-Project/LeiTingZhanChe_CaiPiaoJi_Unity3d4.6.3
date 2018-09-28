@@ -2,6 +2,7 @@
 //#define DRAW_GAME_INFO
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public enum NpcJiFenEnum
 {
@@ -345,6 +346,9 @@ public class XkGameCtrl : SSGameMono
 		try
 		{
 			_Instance = this;
+            Application.runInBackground = true;
+            InitCheckLoadingMovieScene();
+
 #if !UNITY_EDITOR
             //发布出来游戏后强制修改.
             IsCaiPiaoHuLuePlayerIndex = false;
@@ -632,10 +636,13 @@ public class XkGameCtrl : SSGameMono
 			XKGlobalData.GetInstance().PlayGuanKaBeiJingAudio();
             //pcvr.GetInstance().AddTVYaoKongBtEvent();
 
-            XKGameVersionCtrl gmVersionCom = gameObject.AddComponent<XKGameVersionCtrl>();
-            if (gmVersionCom != null)
+            if (XKGameVersionCtrl.IsInit == false)
             {
-                gmVersionCom.Init();
+                XKGameVersionCtrl gmVersionCom = gameObject.AddComponent<XKGameVersionCtrl>();
+                if (gmVersionCom != null)
+                {
+                    gmVersionCom.Init();
+                }
             }
 
 #if DRAW_DEBUG_CAIPIAO_INFO
@@ -734,7 +741,119 @@ public class XkGameCtrl : SSGameMono
 		}
 	}
 
-	void Update()
+    float m_TimeLastMovieUnit = 30f;
+    float m_TimeLastMovie = 0f;
+    /// <summary>
+    /// 初始化加载循环动画游戏场景.
+    /// </summary>
+    void InitCheckLoadingMovieScene()
+    {
+        m_TimeLastMovie = Time.time;
+        m_TimeLastMovieUnit = Time.time;
+    }
+
+    void CheckLoadingMovieScene()
+    {
+        if (Time.time - m_TimeLastMovieUnit < 15f)
+        {
+            return;
+        }
+        m_TimeLastMovieUnit = Time.time;
+
+
+        if (DaoJiShiCtrl.GetInstanceOne().IsPlayDaoJishi == true
+            || DaoJiShiCtrl.GetInstanceTwo().IsPlayDaoJishi == true
+            || DaoJiShiCtrl.GetInstanceThree().IsPlayDaoJishi == true)
+        {
+            //有玩家正在播放倒计时.
+            //Debug.LogWarning("player have play daoJiShi...");
+            return;
+        }
+
+        if (XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.GetAllPlayerIsHaveCaiPiao() == true)
+        {
+            //还有玩家的彩票没有打印完.
+            //Debug.LogWarning("player have print caiPiao...");
+            return;
+        }
+
+        if (m_GamePlayerAiData != null && m_GamePlayerAiData.IsActiveAiPlayer == false)
+        {
+            //有激活游戏的玩家.
+            //Debug.LogWarning("player have play game...");
+            return;
+        }
+
+        //if (Time.time - m_TimeLastMovie > 20f) //test
+        if (Time.time - m_TimeLastMovie > 3600f * 2f)
+        {
+            m_TimeLastMovie = Time.time;
+
+#if !UNITY_EDITOR
+            StartCoroutine(DelayLoadingMovieScene());
+#endif
+        }
+    }
+
+    IEnumerator DelayLoadingMovieScene()
+    {
+        if (SSUIRoot.GetInstance().m_GameUIManage != null)
+        {
+            SSUIRoot.GetInstance().m_GameUIManage.CreateCompanyLogo();
+        }
+
+        float audioVol = 1f;
+        do
+        {
+            yield return new WaitForSeconds(0.1f);
+            audioVol -= 0.05f;
+            if (audioVol < 0f)
+            {
+                audioVol = 0f;
+            }
+            AudioListener.volume = audioVol;
+
+            if (audioVol <= 0f)
+            {
+                break;
+            }
+        } while (true);
+
+        yield return new WaitForSeconds(0.2f);
+        //LoadingGameMovie();
+        //RestartGame();
+        LoadingRestartGameScene();
+    }
+
+    /// <summary>
+    /// 重新启动游戏.
+    /// </summary>
+    void RestartGame()
+    {
+        Application.Quit();
+        RunCmd("start OpenApp.exe");
+    }
+
+    void RunCmd(string command)
+    {
+        //實例一個Process類，啟動一個獨立進程    
+        System.Diagnostics.Process p = new System.Diagnostics.Process();    //Process類有一個StartInfo屬性，這個是ProcessStartInfo類，    
+                                                                            //包括了一些屬性和方法，下面我們用到了他的幾個屬性：   
+        p.StartInfo.FileName = "cmd.exe";           //設定程序名   
+        p.StartInfo.Arguments = "/c " + command;    //設定程式執行參數   
+        p.StartInfo.UseShellExecute = false;        //關閉Shell的使用    p.StartInfo.RedirectStandardInput = true;   //重定向標準輸入    p.StartInfo.RedirectStandardOutput = true;  //重定向標準輸出   
+        p.StartInfo.RedirectStandardError = true;   //重定向錯誤輸出    
+        p.StartInfo.CreateNoWindow = true;          //設置不顯示窗口    
+        p.Start();   //啟動
+
+        //p.WaitForInputIdle();
+        //MoveWindow(p.MainWindowHandle, 1000, 10, 300, 200, true);
+
+        //p.StandardInput.WriteLine(command); //也可以用這種方式輸入要執行的命令    
+        //p.StandardInput.WriteLine("exit");        //不過要記得加上Exit要不然下一行程式執行的時候會當機    return p.StandardOutput.ReadToEnd();        //從輸出流取得命令執行結果
+    }
+
+    void Update()
     {
 #if DRAW_GAME_INFO
         if (!pcvr.bIsHardWare)
@@ -747,10 +866,11 @@ public class XkGameCtrl : SSGameMono
 #endif
         //if (!pcvr.bIsHardWare)
         //{
-            //if (Input.GetKeyUp(KeyCode.P))
-            //{
-            //    OpenAllAiPlayerTank();
-            //    //AudioBeiJingCtrl.StopGameBeiJingAudio();
+        //    if (Input.GetKeyUp(KeyCode.P))
+        //    {
+        //        LoadingGameMovie();
+                //OpenAllAiPlayerTank();
+                //AudioBeiJingCtrl.StopGameBeiJingAudio();
             //}
 
             //if (Input.GetKeyUp(KeyCode.L))
@@ -776,17 +896,18 @@ public class XkGameCtrl : SSGameMono
             //    SubGamePlayerHealth(PlayerEnum.PlayerTwo, bloodVal, true);
             //    SubGamePlayerHealth(PlayerEnum.PlayerThree, bloodVal, true);
             //    SubGamePlayerHealth(PlayerEnum.PlayerFour, bloodVal, true);
-                //XKPlayerCamera.GetInstanceFeiJi().HandlePlayerCameraShake();
-                //JiFenJieMianCtrl.GetInstance().ActiveJiFenJieMian();
-                //XKDaoJuGlobalDt.SetTimeFenShuBeiLv(PlayerEnum.PlayerOne);
-                //ActivePlayerToGame(PlayerEnum.PlayerOne, true);
-                //XKGameStageCtrl.GetInstance().MoveIntoStageUI();
-                //XKBossLXCtrl.GetInstance().StartPlayBossLaiXi();
-                //BossRemoveAllNpcAmmo();
-                //			}
+            //XKPlayerCamera.GetInstanceFeiJi().HandlePlayerCameraShake();
+            //JiFenJieMianCtrl.GetInstance().ActiveJiFenJieMian();
+            //XKDaoJuGlobalDt.SetTimeFenShuBeiLv(PlayerEnum.PlayerOne);
+            //ActivePlayerToGame(PlayerEnum.PlayerOne, true);
+            //XKGameStageCtrl.GetInstance().MoveIntoStageUI();
+            //XKBossLXCtrl.GetInstance().StartPlayBossLaiXi();
+            //BossRemoveAllNpcAmmo();
+            //			}
         //}
-		CheckNpcTranFromList();
-	}
+        CheckNpcTranFromList();
+        CheckLoadingMovieScene();
+    }
 
 	void DelayResetIsLoadingLevel()
 	{
@@ -1777,7 +1898,7 @@ public class XkGameCtrl : SSGameMono
 
 	public static void SetActivePlayerOne(bool isActive)
 	{
-        Debug.Log("Unity: SetActivePlayerOne -> isActive ======== " + isActive);
+        //Debug.Log("Unity: SetActivePlayerOne -> isActive ======== " + isActive);
 		IsActivePlayerOne = isActive;
 		//pcvr.OpenAllPlayerFangXiangPanPower(PlayerEnum.PlayerOne);
 		CheckPlayerActiveNum();
@@ -1940,6 +2061,28 @@ public class XkGameCtrl : SSGameMono
 		}
 	}
 
+    void LoadingRestartGameScene()
+    {
+        if (IsLoadingLevel)
+        {
+            return;
+        }
+        ResetGameInfo();
+
+        IsLoadingLevel = true;
+        SetActivePlayerOne(false);
+        SetActivePlayerTwo(false);
+        SetActivePlayerThree(false);
+        SetActivePlayerFour(false);
+        
+        if (!IsGameOnQuit)
+        {
+            Debug.Log("LoadingRestartGameScene...");
+            System.GC.Collect();
+            Application.LoadLevel((int)GameLevel.RestartGame);
+        }
+    }
+
 	public static void LoadingGameMovie(int key = 0)
 	{
 		if (XkGameCtrl.IsLoadingLevel) {
@@ -1960,6 +2103,7 @@ public class XkGameCtrl : SSGameMono
 
         //pcvr.GetInstance().ClearGameWeiXinData();
 		if (!IsGameOnQuit) {
+            Debug.Log("LoadingGameMovie...");
 			System.GC.Collect();
 			Application.LoadLevel((int)GameLevel.Movie);
 		}

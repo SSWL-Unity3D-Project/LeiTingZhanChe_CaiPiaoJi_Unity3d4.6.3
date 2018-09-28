@@ -1,6 +1,7 @@
-ï»¿#define TEST_SHOW_PLAYER_CAIPIAO
+//#define TEST_SHOW_PLAYER_CAIPIAO
 //#define TEST_OUT_PRINT_CARD
 //#define CREATE_SUPER_JPBOSS
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,15 +10,15 @@ public class SSCaiPiaoDataManage : SSGameMono
     public class GuDingBanCaiPiaoJPBossData
     {
         /// <summary>
-        /// æœ€å°å¯åŠ¨å¸å€¼.
+        /// ×îĞ¡Æô¶¯±ÒÖµ.
         /// </summary>
         internal int MinCoin = 0;
         /// <summary>
-        /// æœ€å¤§å¯åŠ¨å¸å€¼.
+        /// ×î´óÆô¶¯±ÒÖµ.
         /// </summary>
         internal int MaxCoin = 0;
         /// <summary>
-        /// JPå¤§å¥–æ‰“çˆ†å›ºå®šæ”¾å½©æ•°é‡.
+        /// JP´ó½±´ò±¬¹Ì¶¨·Å²ÊÊıÁ¿.
         /// </summary>
         internal int JPBossDeCai = 0;
         public GuDingBanCaiPiaoJPBossData(int min, int max, int caiPiaoVal)
@@ -28,19 +29,19 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
     }
     /// <summary>
-    /// å›ºå®šæ¿å½©ç¥¨æ•°æ®.
+    /// ¹Ì¶¨°å²ÊÆ±Êı¾İ.
     /// </summary>
     public class GuDingBanCaiPiaoData
     {
         /// <summary>
-        /// æˆ˜è½¦æ‰“çˆ†å›ºå®šå½©ç¥¨30å¼ (æˆ˜è½¦å‡ºå½©æ¡ä»¶)
+        /// Õ½³µ´ò±¬¹Ì¶¨²ÊÆ±30ÕÅ(Õ½³µ³ö²ÊÌõ¼ş)
         /// </summary>
         internal int ZhanCheDeCai = 30;
         /// <summary>
-        /// JPå¤§å¥–æ‰“çˆ†å›ºå®šæ”¾å½©1000ã€2000ã€3000å¼ ï¼Œå…·ä½“æ ¹æ®åœºåœ°è®¾ç½®çš„å‡ å¸å¯åŠ¨åŠä¸€å¸ç­‰äºå¤šå°‘å¼ å½©ç¥¨ç¡®å®š.
-        /// 1â€”â€”3å¸å¯åŠ¨ï¼Œ1000å¼ 
-        /// 4â€”â€”5å¸å¯åŠ¨ï¼Œ2000å¼ 
-        /// 6â€”â€”10å¸å¯åŠ¨ï¼Œ3000å¼ 
+        /// JP´ó½±´ò±¬¹Ì¶¨·Å²Ê1000¡¢2000¡¢3000ÕÅ£¬¾ßÌå¸ù¾İ³¡µØÉèÖÃµÄ¼¸±ÒÆô¶¯¼°Ò»±ÒµÈÓÚ¶àÉÙÕÅ²ÊÆ±È·¶¨.
+        /// 1¡ª¡ª3±ÒÆô¶¯£¬1000ÕÅ
+        /// 4¡ª¡ª5±ÒÆô¶¯£¬2000ÕÅ
+        /// 6¡ª¡ª10±ÒÆô¶¯£¬3000ÕÅ
         /// </summary>
         internal GuDingBanCaiPiaoJPBossData[] JPBossDeCaiData = new GuDingBanCaiPiaoJPBossData[3]
         {
@@ -50,7 +51,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         };
 
         /// <summary>
-        /// è·å–JPBosså‡ºç¥¨æ¡ä»¶.
+        /// »ñÈ¡JPBoss³öÆ±Ìõ¼ş.
         /// </summary>
         public int GetJPBossChuPiaoTiaoJian()
         {
@@ -71,27 +72,27 @@ public class SSCaiPiaoDataManage : SSGameMono
     public GuDingBanCaiPiaoData m_GuDingBanCaiPiaoData = new GuDingBanCaiPiaoData();
 
     /// <summary>
-    /// JPBosså¤§å¥–æ•°æ®.
+    /// JPBoss´ó½±Êı¾İ.
     /// </summary>
     [System.Serializable]
     public class JPBossDaJiangData
     {
         public Transform CaiPiaoLiZiPoint;
         /// <summary>
-        /// å½©ç¥¨ç²’å­é¢„åˆ¶.
+        /// ²ÊÆ±Á£×ÓÔ¤ÖÆ.
         /// </summary>
         public GameObject CaiPiaoLiZiPrefab;
     }
     /// <summary>
-    /// JPBosså¤§å¥–å½©ç¥¨ç²’å­.
+    /// JPBoss´ó½±²ÊÆ±Á£×Ó.
     /// </summary>
     GameObject m_JPBossDaJiangCaiPiaoLiZiObj;
     /// <summary>
-    /// JPBosså¤§å¥–æ•°æ®.
+    /// JPBoss´ó½±Êı¾İ.
     /// </summary>
     public JPBossDaJiangData m_JPBossDaJiangData;
     /// <summary>
-    /// åˆ›å»ºJPBosså¤§å¥–å½©ç¥¨ç²’å­.
+    /// ´´½¨JPBoss´ó½±²ÊÆ±Á£×Ó.
     /// </summary>
     public void CreatJPBossDaJiangCaiPiaoLiZi()
     {
@@ -109,7 +110,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// åˆ é™¤JPBosså¤§å¥–å½©ç¥¨ç²’å­.
+    /// É¾³ıJPBoss´ó½±²ÊÆ±Á£×Ó.
     /// </summary>
     public void RemoveJPBossDaJiangCaiPiaoLiZi()
     {
@@ -120,14 +121,14 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// æ¸¸æˆå½©ç¥¨æ•°æ®.
+    /// ÓÎÏ·²ÊÆ±Êı¾İ.
     /// </summary>
     [System.Serializable]
     public class GameCaiPiaoData
     {
         float _XuBiChuPiaoLv = 0.7f;
         /// <summary>
-        /// ç»­å¸å‡ºç¥¨ç‡.
+        /// Ğø±Ò³öÆ±ÂÊ.
         /// </summary>
         public float XuBiChuPiaoLv
         {
@@ -142,7 +143,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
         float _ZhengChangChuPiaoLv = 0.4f;
         /// <summary>
-        /// æ­£å¸¸å¾—å½©å‡ºç¥¨ç‡.
+        /// Õı³£µÃ²Ê³öÆ±ÂÊ.
         /// </summary>
         public float ZhengChangChuPiaoLv
         {
@@ -156,32 +157,32 @@ public class SSCaiPiaoDataManage : SSGameMono
             }
         }
         /// <summary>
-        /// æˆ˜è½¦å¾—å½©å‡ºç¥¨ç‡.
+        /// Õ½³µµÃ²Ê³öÆ±ÂÊ.
         /// </summary>
         float ZhanCheChuPiaoLv = 0.3f;
         /// <summary>
-        /// éšæœºé“å…·å‡ºç¥¨ç‡.
+        /// Ëæ»úµÀ¾ß³öÆ±ÂÊ.
         /// </summary>
         float SuiJiDaoJuChuPiaoLv = 0.05f;
         /// <summary>
-        /// JPBosså‡ºç¥¨ç‡.
+        /// JPBoss³öÆ±ÂÊ.
         /// </summary>
         float JPBossChuPiaoLv = 0.25f;
         /// <summary>
-        /// æˆ˜è½¦å‡ºç¥¨æ¡ä»¶(æ¸¸æˆå¯åŠ¨å¸æ•°ä¹˜ä»¥è¯¥å€¼).
+        /// Õ½³µ³öÆ±Ìõ¼ş(ÓÎÏ·Æô¶¯±ÒÊı³ËÒÔ¸ÃÖµ).
         /// </summary>
         float ZhanCheChuPiaoTiaoJian = 2.5f;
         /// <summary>
-        /// éšæœºé“å…·å‡ºç¥¨æ¡ä»¶(æ¸¸æˆå¯åŠ¨å¸æ•°ä¹˜ä»¥è¯¥å€¼).
+        /// Ëæ»úµÀ¾ß³öÆ±Ìõ¼ş(ÓÎÏ·Æô¶¯±ÒÊı³ËÒÔ¸ÃÖµ).
         /// </summary>
         float SuiJiDaoJuChuPiaoTiaoJian = 0.5f;
         /// <summary>
-        /// JPBosså‡ºç¥¨æ¡ä»¶(æ¸¸æˆå¯åŠ¨å¸æ•°ä¹˜ä»¥è¯¥å€¼).
+        /// JPBoss³öÆ±Ìõ¼ş(ÓÎÏ·Æô¶¯±ÒÊı³ËÒÔ¸ÃÖµ).
         /// </summary>
         float JPBossChuPiaoTiaoJian = 50f;
         int _ZhanCheDeCai = 0;
         /// <summary>
-        /// æˆ˜è½¦å¾—å½©ç´¯ç§¯æ•°é‡.
+        /// Õ½³µµÃ²ÊÀÛ»ıÊıÁ¿.
         /// </summary>
         public int ZhanCheDeCai
         {
@@ -197,7 +198,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
         //int _SuiJiDaoJuDeCai = 0;
         /// <summary>
-        /// éšæœºé“å…·å¾—å½©ç´¯ç§¯æ•°é‡.
+        /// Ëæ»úµÀ¾ßµÃ²ÊÀÛ»ıÊıÁ¿.
         /// </summary>
         public int SuiJiDaoJuDeCai
         {
@@ -214,7 +215,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
         int _JPBossDeCai = 0;
         /// <summary>
-        /// JPBosså¾—å½©ç´¯ç§¯æ•°é‡.
+        /// JPBossµÃ²ÊÀÛ»ıÊıÁ¿.
         /// </summary>
         public int JPBossDeCai
         {
@@ -230,30 +231,30 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
         
         /// <summary>
-        /// å¾—å½©çŠ¶æ€.
+        /// µÃ²Ê×´Ì¬.
         /// </summary>
         public enum DeCaiState
         {
             /// <summary>
-            /// æˆ˜è½¦ç±»å‹.
+            /// Õ½³µÀàĞÍ.
             /// </summary>
             ZhanChe = 0,
             /// <summary>
-            /// éšæœºé“å…·ç±»å‹.
+            /// Ëæ»úµÀ¾ßÀàĞÍ.
             /// </summary>
             SuiJiDaoJu = 1,
             /// <summary>
-            /// JPBossç±»å‹.
+            /// JPBossÀàĞÍ.
             /// </summary>
             JPBoss = 2,
             /// <summary>
-            /// æ™®é€šæ­£å¸¸å¾—å½©ç±»å‹.
+            /// ÆÕÍ¨Õı³£µÃ²ÊÀàĞÍ.
             /// </summary>
             ZhengChang = 3,
         }
 
         /// <summary>
-        /// åˆ†é…å¾—å½©æ•°é‡ä¿¡æ¯.
+        /// ·ÖÅäµÃ²ÊÊıÁ¿ĞÅÏ¢.
         /// </summary>
         public void FenPeiDeCaiVal(bool isPlayerXuBi)
         {
@@ -261,7 +262,7 @@ public class SSCaiPiaoDataManage : SSGameMono
             float xuBiChuPiaoLvTmp = isPlayerXuBi == true ? XuBiChuPiaoLv : 1f;
             if (isPlayerXuBi)
             {
-                //ç©å®¶ç»­å¸ç§¯ç´¯åˆ°é¢„æ”¯å½©ç¥¨æ± çš„å½©ç¥¨æ•°é‡.
+                //Íæ¼ÒĞø±Ò»ıÀÛµ½Ô¤Ö§²ÊÆ±³ØµÄ²ÊÆ±ÊıÁ¿.
                 int jiLeiToYuZhiCaiPiaoChiVal = (int)(coinStart * XuBiChuPiaoLv);
                 XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.m_GameYuZhiCaiPiaoData.AddYuZhiCaiPiao(jiLeiToYuZhiCaiPiaoChiVal);
             }
@@ -271,7 +272,7 @@ public class SSCaiPiaoDataManage : SSGameMono
             int suiJiDaoJuDeCaiFenPei = (int)(coinStart * SuiJiDaoJuChuPiaoLv);
             if (suiJiDaoJuDeCaiFenPei < 1)
             {
-                //è‡³å°‘ç»™éšæœºé“å…·åˆ†é…ä¸€å¼ å½©ç¥¨.
+                //ÖÁÉÙ¸øËæ»úµÀ¾ß·ÖÅäÒ»ÕÅ²ÊÆ±.
                 suiJiDaoJuDeCaiFenPei = 1;
             }
             SuiJiDaoJuDeCai += suiJiDaoJuDeCaiFenPei;
@@ -284,13 +285,13 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
 
         /// <summary>
-        /// å‡å»æ¸¸æˆæŸç§ç±»å‹å¾—å½©ç´¯ç§¯æ•°é‡.
+        /// ¼õÈ¥ÓÎÏ·Ä³ÖÖÀàĞÍµÃ²ÊÀÛ»ıÊıÁ¿.
         /// </summary>
         public void SubGameDeCaiValByDeCaiState(PlayerEnum index, DeCaiState type, SuiJiDaoJuState suiJiDaoJuType = SuiJiDaoJuState.BaoXiang)
         {
             if (XkGameCtrl.GetInstance().m_GamePlayerAiData.IsActiveAiPlayer == true)
             {
-                //æ²¡æœ‰æ¿€æ´»ä»»ä½•ç©å®¶.
+                //Ã»ÓĞ¼¤»îÈÎºÎÍæ¼Ò.
                 return;
             }
 
@@ -309,13 +310,13 @@ public class SSCaiPiaoDataManage : SSGameMono
                             val = (int)(coinStart * ZhanCheChuPiaoTiaoJian);
                         }
                         ZhanCheDeCai -= val;
-                        //ä»é¢„åˆ¶å½©æ± é‡Œå–å½©ç¥¨æŠ•å…¥æˆ˜è½¦å½©æ± .
+                        //´ÓÔ¤ÖÆ²Ê³ØÀïÈ¡²ÊÆ±Í¶ÈëÕ½³µ²Ê³Ø.
                         XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.m_GameYuZhiCaiPiaoData.SubZhanCheCaiPiaoVal();
                         break;
                     }
                 case DeCaiState.SuiJiDaoJu:
                     {
-                        //éšæœºé“å…·.
+                        //Ëæ»úµÀ¾ß.
                         float suiJiDaoJuChuPiaoLv = 0f;
                         SuiJiDaoJuData suiJiDaoJuData = XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.m_SuiJiDaoJuData;
                         if (suiJiDaoJuType == SuiJiDaoJuState.TouZi)
@@ -328,10 +329,10 @@ public class SSCaiPiaoDataManage : SSGameMono
                         }
                         val = (int)(coinStart * SuiJiDaoJuChuPiaoTiaoJian);
 
-                        //åº”è¯¥ç»™ç©å®¶çš„å½©ç¥¨æ•°é‡.
+                        //Ó¦¸Ã¸øÍæ¼ÒµÄ²ÊÆ±ÊıÁ¿.
                         int outCaiPiao = (int)(val * suiJiDaoJuChuPiaoLv);
 
-                        //éšæœºé“å…·ç§¯ç´¯åˆ°é¢„æ”¯å½©ç¥¨æ± çš„å½©ç¥¨æ•°é‡.
+                        //Ëæ»úµÀ¾ß»ıÀÛµ½Ô¤Ö§²ÊÆ±³ØµÄ²ÊÆ±ÊıÁ¿.
                         int jiLeiToYuZhiCaiPiaoChiVal = val - outCaiPiao;
                         XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.m_GameYuZhiCaiPiaoData.AddYuZhiCaiPiao(jiLeiToYuZhiCaiPiaoChiVal);
 
@@ -350,7 +351,7 @@ public class SSCaiPiaoDataManage : SSGameMono
                             val = (int)(coinStart * JPBossChuPiaoTiaoJian);
                         }
                         JPBossDeCai -= val;
-                        //ä»é¢„åˆ¶å½©æ± é‡Œå–å½©ç¥¨æŠ•å…¥JPBosså½©æ± .
+                        //´ÓÔ¤ÖÆ²Ê³ØÀïÈ¡²ÊÆ±Í¶ÈëJPBoss²Ê³Ø.
                         XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.m_GameYuZhiCaiPiaoData.SubJPBossCaiPiaoVal();
                         break;
                     }
@@ -358,7 +359,7 @@ public class SSCaiPiaoDataManage : SSGameMono
 
             if (val > 0)
             {
-                //æ­¤æ—¶å½©ç¥¨æœºåº”è¯¥ç»™å¯¹åº”ç©å®¶å‡ºvalå¼ å½©ç¥¨.
+                //´ËÊ±²ÊÆ±»úÓ¦¸Ã¸ø¶ÔÓ¦Íæ¼Ò³övalÕÅ²ÊÆ±.
                 Debug.Log("Unity: SubGameDeCaiValByDeCaiState -> index ====== " + index
                     + ", chuPiaoVal ====== " + val
                     + ", type ======= " + type);
@@ -367,7 +368,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
 
         /// <summary>
-        /// è·å–éœ€è¦æ‰“å°çš„å½©ç¥¨æ•°é‡.
+        /// »ñÈ¡ĞèÒª´òÓ¡µÄ²ÊÆ±ÊıÁ¿.
         /// </summary>
         public int GetPrintCaiPiaoValueByDeCaiState(DeCaiState type, SuiJiDaoJuState suiJiDaoJuType = SuiJiDaoJuState.BaoXiang)
         {
@@ -400,7 +401,7 @@ public class SSCaiPiaoDataManage : SSGameMono
                             suiJiDaoJuChuPiaoLv = suiJiDaoJuData.BaoXiangDePiaoLv;
                         }
                         value = (int)(coinStart * SuiJiDaoJuChuPiaoTiaoJian);
-                        //åº”è¯¥ç»™ç©å®¶çš„å½©ç¥¨æ•°é‡.
+                        //Ó¦¸Ã¸øÍæ¼ÒµÄ²ÊÆ±ÊıÁ¿.
                         value = (int)(value * suiJiDaoJuChuPiaoLv);
                         break;
                     }
@@ -421,7 +422,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
 
         /// <summary>
-        /// åˆ¤æ–­æ˜¯å¦è¾¾åˆ°æŸç§å¾—å½©ç±»å‹çš„å‡ºå½©æ¡ä»¶.
+        /// ÅĞ¶ÏÊÇ·ñ´ïµ½Ä³ÖÖµÃ²ÊÀàĞÍµÄ³ö²ÊÌõ¼ş.
         /// </summary>
         public bool GetIsChuCaiPiaoByDeCaiState(DeCaiState type)
         {
@@ -479,7 +480,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
 
         /// <summary>
-        /// è·å–å½“å‰å½©æ± æ˜¯å‡ºç¥¨æ¡ä»¶çš„å‡ å€.
+        /// »ñÈ¡µ±Ç°²Ê³ØÊÇ³öÆ±Ìõ¼şµÄ¼¸±¶.
         /// </summary>
         public int GetChuPiaoTiaoJianBeiShu(DeCaiState type)
         {
@@ -515,36 +516,36 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
     }
     /// <summary>
-    /// æ¸¸æˆå½©ç¥¨æ•°æ®ä¿¡æ¯.
+    /// ÓÎÏ·²ÊÆ±Êı¾İĞÅÏ¢.
     /// </summary>
     [HideInInspector]
     public GameCaiPiaoData m_GameCaiPiaoData = new GameCaiPiaoData();
 
 
     /// <summary>
-    /// éšæœºé“å…·ç±»å‹.
+    /// Ëæ»úµÀ¾ßÀàĞÍ.
     /// </summary>
     public enum SuiJiDaoJuState
     {
         /// <summary>
-        /// éª°å­.
+        /// ÷»×Ó.
         /// </summary>
         TouZi = 0,
         /// <summary>
-        /// å®ç®±.
+        /// ±¦Ïä.
         /// </summary>
         BaoXiang = 1,
     }
 
     /// <summary>
-    /// éšæœºé“å…·æ•°æ®ä¿¡æ¯.
+    /// Ëæ»úµÀ¾ßÊı¾İĞÅÏ¢.
     /// </summary>
     [System.Serializable]
     public class SuiJiDaoJuData
     {
         float _TouZiGaiLv = 0.5f;
         /// <summary>
-        /// éª°å­äº§ç”Ÿçš„æ¦‚ç‡.
+        /// ÷»×Ó²úÉúµÄ¸ÅÂÊ.
         /// </summary>
         public float TouZiGaiLv
         {
@@ -554,33 +555,33 @@ public class SSCaiPiaoDataManage : SSGameMono
             }
         }
         /// <summary>
-        /// éª°å­åœ¨éšæœºé“å…·é‡Œçš„å¾—ç¥¨ç‡.
+        /// ÷»×ÓÔÚËæ»úµÀ¾ßÀïµÄµÃÆ±ÂÊ.
         /// </summary>
         internal float TouZiDePiaoLv = 0.6f;
         /// <summary>
-        /// å®ç®±åœ¨éšæœºé“å…·é‡Œçš„å¾—ç¥¨ç‡.
+        /// ±¦ÏäÔÚËæ»úµÀ¾ßÀïµÄµÃÆ±ÂÊ.
         /// </summary>
         internal float BaoXiangDePiaoLv = 0.8f;
         /// <summary>
-        /// éª°å­é“å…·é¢„åˆ¶.
+        /// ÷»×ÓµÀ¾ßÔ¤ÖÆ.
         /// </summary>
         public GameObject TouZiPrefab;
         /// <summary>
-        /// å®ç®±é“å…·é¢„åˆ¶.
+        /// ±¦ÏäµÀ¾ßÔ¤ÖÆ.
         /// </summary>
         public GameObject BaoXiangPrefab;
     }
     /// <summary>
-    /// éšæœºé“å…·æ•°æ®ä¿¡æ¯.
+    /// Ëæ»úµÀ¾ßÊı¾İĞÅÏ¢.
     /// </summary>
     public SuiJiDaoJuData m_SuiJiDaoJuData = new SuiJiDaoJuData();
     /// <summary>
-    /// æ¸¸æˆé¢„æ”¯å½©ç¥¨æ•°æ®.
+    /// ÓÎÏ·Ô¤Ö§²ÊÆ±Êı¾İ.
     /// </summary>
     internal SSGameYuZhiCaiPiaoData m_GameYuZhiCaiPiaoData = new SSGameYuZhiCaiPiaoData();
 
     /// <summary>
-    /// è·å–éšæœºé“å…·é¢„åˆ¶.
+    /// »ñÈ¡Ëæ»úµÀ¾ßÔ¤ÖÆ.
     /// </summary>
     public GameObject GetSuiJiDaoJuPrefab(PlayerEnum index)
     {
@@ -631,11 +632,11 @@ public class SSCaiPiaoDataManage : SSGameMono
     public class PlayerActiveTimeData
     {
         /// <summary>
-        /// æ¸¸æˆæ¿€æ´»æ—¶é—´ç­‰çº§.
+        /// ÓÎÏ·¼¤»îÊ±¼äµÈ¼¶.
         /// </summary>
         public int TimeLevel = 0;
         /// <summary>
-        /// å¢åŠ ä¼¤å®³ç™¾åˆ†æ¯”.
+        /// Ôö¼ÓÉËº¦°Ù·Ö±È.
         /// </summary>
         public float DamageAdd = 0f;
         public PlayerActiveTimeData(int time, float damage)
@@ -645,8 +646,8 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
     }
     /// <summary>
-    /// ç©å®¶æ¿€æ´»æ¸¸æˆæ—¶é•¿ç­‰çº§ä¿¡æ¯.
-    /// m_PlayerActiveTimeData.TimeLevelä»ä½åˆ°é«˜.
+    /// Íæ¼Ò¼¤»îÓÎÏ·Ê±³¤µÈ¼¶ĞÅÏ¢.
+    /// m_PlayerActiveTimeData.TimeLevel´ÓµÍµ½¸ß.
     /// </summary>
     internal PlayerActiveTimeData[] m_PlayerActiveTimeData = new PlayerActiveTimeData[3]
     {
@@ -656,17 +657,17 @@ public class SSCaiPiaoDataManage : SSGameMono
     };
 
     /// <summary>
-    /// æ­£å¸¸å¾—å½©æ•°æ®ä¿¡æ¯.
+    /// Õı³£µÃ²ÊÊı¾İĞÅÏ¢.
     /// </summary>
     [System.Serializable]
     public class ZhengChangDeCaiData
     {
         /// <summary>
-        /// æ¸¸æˆæ¿€æ´»æ—¶é•¿.
+        /// ÓÎÏ·¼¤»îÊ±³¤.
         /// </summary>
         public float TimeVal = 0f;
         /// <summary>
-        /// è·å¾—æ­£å¸¸å½©ç¥¨çš„æ¯”ä¾‹.
+        /// »ñµÃÕı³£²ÊÆ±µÄ±ÈÀı.
         /// </summary>
         public float DeCaiBiLi = 0f;
         public ZhengChangDeCaiData(float time, float biLi)
@@ -683,7 +684,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     };
 
     /// <summary>
-    /// è·å–å¯¹ç©å®¶å¢åŠ çš„ä¼¤å®³æ•°å€¼.
+    /// »ñÈ¡¶ÔÍæ¼ÒÔö¼ÓµÄÉËº¦ÊıÖµ.
     /// </summary>
     public float GetAddDamageToPlayer(PlayerEnum index)
     {
@@ -699,7 +700,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         {
             if (m_PlayerActiveTimeData[i].TimeLevel <= timeVal)
             {
-                //ç©å®¶æ¿€æ´»æ¸¸æˆæ—¶é•¿å¤§äºç­‰äºå½“å‰ç­‰çº§.
+                //Íæ¼Ò¼¤»îÓÎÏ·Ê±³¤´óÓÚµÈÓÚµ±Ç°µÈ¼¶.
                 damageVal = m_PlayerActiveTimeData[i].DamageAdd;
                 break;
             }
@@ -708,21 +709,21 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// ç©å®¶ç»­å¸æ•°æ®ä¿¡æ¯.
+    /// Íæ¼ÒĞø±ÒÊı¾İĞÅÏ¢.
     /// </summary>
     public class PlayerCoinData
     {
         /// <summary>
-        /// ç»­å¸æ•°é‡.
+        /// Ğø±ÒÊıÁ¿.
         /// </summary>
         public int XuBiVal = 0;
         /// <summary>
-        /// æ¸¸æˆæ¿€æ´»æ—¶é—´è®°å½•.
+        /// ÓÎÏ·¼¤»îÊ±¼ä¼ÇÂ¼.
         /// </summary>
         public float TimeActive = 0f;
         int _ZhengChangDeCai = 0;
         /// <summary>
-        /// ç©å®¶æ­£å¸¸å¾·å½©æ•°é‡.
+        /// Íæ¼ÒÕı³£µÂ²ÊÊıÁ¿.
         /// </summary>
         public int ZhengChangDeCai
         {
@@ -737,7 +738,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
 
         /// <summary>
-        /// é‡ç½®æ­£å¸¸å¾—å½©ä¿¡æ¯.
+        /// ÖØÖÃÕı³£µÃ²ÊĞÅÏ¢.
         /// </summary>
         public void ResetZhengChangDeCai(PlayerEnum index)
         {
@@ -761,16 +762,16 @@ public class SSCaiPiaoDataManage : SSGameMono
             }
 
             deCaiVal = (int)(ZhengChangDeCai * deCaiBiLi);
-            //å›æ”¶å½©ç¥¨.
+            //»ØÊÕ²ÊÆ±.
             int huiShouCaiPiao = ZhengChangDeCai - deCaiVal;
             XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.m_GameYuZhiCaiPiaoData.AddYuZhiCaiPiao(huiShouCaiPiao);
             ZhengChangDeCai = deCaiVal;
 
             if (deCaiVal > 0)
             {
-                //è¿™ä¸ªæ—¶å€™åº”è¯¥æ‰“å°å‡ºç©å®¶çš„æ­£å¸¸äº§å¾—å½©æ•°é‡.
+                //Õâ¸öÊ±ºòÓ¦¸Ã´òÓ¡³öÍæ¼ÒµÄÕı³£²úµÃ²ÊÊıÁ¿.
                 Debug.Log("Unity: ResetZhengChangDeCai -> index ========== " + index + ", ZhengChangDeCai ==== " + ZhengChangDeCai + ", deCaiBiLi == " + deCaiBiLi);
-                //æ˜¾ç¤ºç©å®¶å‰©ä½™å½©ç¥¨æˆå°±UI.
+                //ÏÔÊ¾Íæ¼ÒÊ£Óà²ÊÆ±³É¾ÍUI.
                 SSUIRoot.GetInstance().m_GameUIManage.CreatePlayerCaiPiaoChengJiu(index, deCaiVal);
                 //XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.AddCaiPiaoToPlayer(index, deCaiVal, GameCaiPiaoData.DeCaiState.ZhengChang);
             }
@@ -778,7 +779,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
 
         /// <summary>
-        /// å¢åŠ æ­£å¸¸å¾—å½©æ•°é‡.
+        /// Ôö¼ÓÕı³£µÃ²ÊÊıÁ¿.
         /// </summary>
         public void AddPlayerZhengChangDeCai(bool isPlayerXuBi)
         {
@@ -799,13 +800,13 @@ public class SSCaiPiaoDataManage : SSGameMono
             
             if (XkGameCtrl.GetInstance().m_PlayerJiChuCaiPiaoData != null)
             {
-                //æ·»åŠ åŸºç¡€å¾—å½©æ•°æ®.
+                //Ìí¼Ó»ù´¡µÃ²ÊÊı¾İ.
                 XkGameCtrl.GetInstance().m_PlayerJiChuCaiPiaoData.AddPlayerJiChuCaiPiao(IndexPlayer, deCaiVal);
             }
         }
 
         /// <summary>
-        /// å‡å°‘æ­£å¸¸å¾—å½©æ•°é‡.
+        /// ¼õÉÙÕı³£µÃ²ÊÊıÁ¿.
         /// </summary>
         public void SubZhengChangDeCai(int val)
         {
@@ -827,7 +828,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
 
         /// <summary>
-        /// ç©å®¶ç´¢å¼•.
+        /// Íæ¼ÒË÷Òı.
         /// </summary>
         public PlayerEnum IndexPlayer = PlayerEnum.Null;
         public PlayerCoinData(PlayerEnum index)
@@ -836,14 +837,14 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
     }
     /// <summary>
-    /// ç©å®¶ç»­å¸ä¿¡æ¯.
+    /// Íæ¼ÒĞø±ÒĞÅÏ¢.
     /// </summary>
     public PlayerCoinData[] m_PlayerCoinData = new PlayerCoinData[3];
 
     /// <summary>
-    /// ç©å®¶ç»­å¸æ•°é‡æ¯”è¾ƒå™¨.
+    /// Íæ¼ÒĞø±ÒÊıÁ¿±È½ÏÆ÷.
     /// </summary>
-    int PlayerCoinDataSortByXuBiVal(PlayerCoinData x, PlayerCoinData y)//æ’åºå™¨  
+    int PlayerCoinDataSortByXuBiVal(PlayerCoinData x, PlayerCoinData y)//ÅÅĞòÆ÷  
     {
         if (x == null)
         {
@@ -864,7 +865,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// è·å–å¯¹ç©å®¶ç»­å¸ä¿¡æ¯æ’åºåçš„æ•°æ®åˆ—è¡¨.
+    /// »ñÈ¡¶ÔÍæ¼ÒĞø±ÒĞÅÏ¢ÅÅĞòºóµÄÊı¾İÁĞ±í.
     /// </summary>
     public PlayerCoinData[] GetSortPlayerCoinData()
     {
@@ -874,7 +875,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// åˆå§‹åŒ–.
+    /// ³õÊ¼»¯.
     /// </summary>
     public void Init()
     {
@@ -891,7 +892,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// å½©ç¥¨æœºæ— ç¥¨.
+    /// ²ÊÆ±»úÎŞÆ±.
     /// </summary>
     private void OnCaiPiaJiWuPiaoEvent(pcvrTXManage.CaiPiaoJi val)
     {
@@ -910,7 +911,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// å½©ç¥¨æœºå‡ºç¥¨.
+    /// ²ÊÆ±»ú³öÆ±.
     /// </summary>
     private void OnCaiPiaJiChuPiaoEvent(pcvrTXManage.CaiPiaoJi val)
     {
@@ -926,7 +927,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// è®¾ç½®ç©å®¶æ¸¸æˆæ¿€æ´»æ—¶é—´ä¿¡æ¯.
+    /// ÉèÖÃÍæ¼ÒÓÎÏ·¼¤»îÊ±¼äĞÅÏ¢.
     /// </summary>
     public void SetPlayerCoinTimeActive(PlayerEnum index)
     {
@@ -940,7 +941,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// æ·»åŠ ç©å®¶ç»­å¸æ•°é‡.
+    /// Ìí¼ÓÍæ¼ÒĞø±ÒÊıÁ¿.
     /// </summary>
     public void AddPlayerXuBiVal(PlayerEnum index)
     {
@@ -950,8 +951,8 @@ public class SSCaiPiaoDataManage : SSGameMono
             return;
         }
 
-        //ç©å®¶è¿›è¡Œäº†ç»­å¸æ¿€æ´»æ¸¸æˆæ“ä½œ.
-        //è®¾ç½®JPBossçš„ç©å®¶ç»­å¸çŠ¶æ€.
+        //Íæ¼Ò½øĞĞÁËĞø±Ò¼¤»îÓÎÏ·²Ù×÷.
+        //ÉèÖÃJPBossµÄÍæ¼ÒĞø±Ò×´Ì¬.
         XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_JPBossRulerData.IsPlayerXuBi = true;
 
         int coinStart = XKGlobalData.GameNeedCoin;
@@ -960,7 +961,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// æ·»åŠ ç©å®¶æ­£å¸¸å¾—å½©æ•°æ®.
+    /// Ìí¼ÓÍæ¼ÒÕı³£µÃ²ÊÊı¾İ.
     /// </summary>
     public void AddPlayerZhengChangDeCai(PlayerEnum index, bool isPlayerXuBi)
     {
@@ -974,7 +975,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// å‡å°‘ç©å®¶æ­£å¸¸å¾—å½©æ•°æ®.
+    /// ¼õÉÙÍæ¼ÒÕı³£µÃ²ÊÊı¾İ.
     /// </summary>
     public void SubPlayerZhengChangDeCai(PlayerEnum indexPlayer, int val)
     {
@@ -989,7 +990,7 @@ public class SSCaiPiaoDataManage : SSGameMono
 
 
     /// <summary>
-    /// é‡ç½®ç©å®¶ç»­å¸æ•°é‡.
+    /// ÖØÖÃÍæ¼ÒĞø±ÒÊıÁ¿.
     /// </summary>
     public void ResetPlayerXuBiInfo(PlayerEnum index)
     {
@@ -1001,26 +1002,26 @@ public class SSCaiPiaoDataManage : SSGameMono
         m_PlayerCoinData[indexVal].XuBiVal = 0;
         Debug.Log("Unity: ResetPlayerXuBiInfo -> index == " + index + ", coinVal ==== " + m_PlayerCoinData[indexVal].XuBiVal);
 
-        //é‡ç½®æ­£å¸¸å¾—å½©æ•°æ®.
+        //ÖØÖÃÕı³£µÃ²ÊÊı¾İ.
         m_PlayerCoinData[indexVal].ResetZhengChangDeCai(index);
     }
 
     /// <summary>
-    /// SuperJPBosså½©ç¥¨æ•°æ®.
+    /// SuperJPBoss²ÊÆ±Êı¾İ.
     /// </summary>
     [System.Serializable]
     public class SuperJPBossCaiPiaoData
     {
         /// <summary>
-        /// å½©ç¥¨å€ç‡åŸºæ•°.
+        /// ²ÊÆ±±¶ÂÊ»ùÊı.
         /// </summary>
         public int CaiPiaoBeiLvJiShu = 25;
         /// <summary>
-        /// çˆ†å½©æ¡ä»¶.
+        /// ±¬²ÊÌõ¼ş.
         /// </summary>
         public int BaoCaiTiaoJian = 125;
         /// <summary>
-        /// çˆ†å½©æ•°é‡.
+        /// ±¬²ÊÊıÁ¿.
         /// </summary>
         public int BaoCaiShuLiang = 150;
         public SuperJPBossCaiPiaoData(int jiShu, int tiaoJian, int shuLiang)
@@ -1030,12 +1031,12 @@ public class SSCaiPiaoDataManage : SSGameMono
             BaoCaiShuLiang = shuLiang;
         }
         /// <summary>
-        /// å½©ç¥¨åŸºæ•°è®¡æ•°.
+        /// ²ÊÆ±»ùÊı¼ÆÊı.
         /// </summary>
         int CaiPiaoJiShuCount = 1;
         int _SuperJPCaiPiao = 0;
         /// <summary>
-        /// è¶…çº§JPBosså½©ç¥¨æ•°.
+        /// ³¬¼¶JPBoss²ÊÆ±Êı.
         /// </summary>
         public int SuperJPCaiPiao
         {
@@ -1055,7 +1056,7 @@ public class SSCaiPiaoDataManage : SSGameMono
                 //    + ", caiPiaoVal == " + caiPiaoVal);
                 if (value >= caiPiaoVal)
                 {
-                    //å¯ä»¥äº§ç”ŸSuperJPBossäº†.
+                    //¿ÉÒÔ²úÉúSuperJPBossÁË.
                     CaiPiaoJiShuCount = (value / (CaiPiaoBeiLvJiShu * coinToCaiPiao)) + 1;
 #if CREATE_SUPER_JPBOSS
                     if (XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_ZhanCheJPBossData.IsCreatSuperJPBoss == false)
@@ -1069,35 +1070,41 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
     }
     /// <summary>
-    /// SuperJPBosså½©ç¥¨æ•°æ®.
+    /// SuperJPBoss²ÊÆ±Êı¾İ.
     /// </summary>
     internal SuperJPBossCaiPiaoData m_SuperJPBossCaiPiaoData = new SuperJPBossCaiPiaoData(25, 125, 150);
 
     /// <summary>
-    /// æ¸¸æˆéœ€è¦æ‰“å°ç»™ç©å®¶çš„å½©ç¥¨æ•°æ®ä¿¡æ¯.
+    /// ÓÎÏ·ĞèÒª´òÓ¡¸øÍæ¼ÒµÄ²ÊÆ±Êı¾İĞÅÏ¢.
     /// </summary>
     public class PcvrPrintCaiPiaoData
     {
         PlayerEnum IndexPlayer;
         int _CaiPiaoVal = 0;
         /// <summary>
-        /// å½©ç¥¨æ•°é‡.
+        /// ²ÊÆ±ÊıÁ¿.
         /// </summary>
         internal int CaiPiaoVal
         {
             set
             {
+                bool isShowCaiPiaoNum = true;
+                if (_CaiPiaoVal <= 0 && CaiPiaoValCache <= 0)
+                {
+                    isShowCaiPiaoNum = false;
+                }
+
                 _CaiPiaoVal = value;
                 if (SSUIRoot.GetInstance().m_GameUIManage != null)
                 {
-                    //æ˜¾ç¤ºç©å®¶å½©ç¥¨æ•°é‡.
-                    SSUIRoot.GetInstance().m_GameUIManage.ShowPlayerCaiPiaoInfo(IndexPlayer, _CaiPiaoVal + CaiPiaoValCache);
+                    //ÏÔÊ¾Íæ¼Ò²ÊÆ±ÊıÁ¿.
+                    SSUIRoot.GetInstance().m_GameUIManage.ShowPlayerCaiPiaoInfo(IndexPlayer, _CaiPiaoVal + CaiPiaoValCache, false, isShowCaiPiaoNum);
                 }
 
                 if (IsDaJiangCaiPiao == true && _CaiPiaoVal + CaiPiaoValCache <= 0)
                 {
                     IsDaJiangCaiPiao = false;
-                    //åˆ é™¤å½©ç¥¨å¤§å¥–UIç•Œé¢.
+                    //É¾³ı²ÊÆ±´ó½±UI½çÃæ.
                     if (SSUIRoot.GetInstance().m_GameUIManage != null)
                     {
                         SSUIRoot.GetInstance().m_GameUIManage.RemoveCaiPiaoDaJiangPanel();
@@ -1111,24 +1118,24 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
 
         /// <summary>
-        /// æ˜¯å¦å¾—åˆ°JPBosså¤§å¥–.
+        /// ÊÇ·ñµÃµ½JPBoss´ó½±.
         /// </summary>
         internal bool IsDaJiangCaiPiao = false;
 
         /// <summary>
-        /// æ˜¯å¦æ­£åœ¨æ‰“å°å½©ç¥¨.
+        /// ÊÇ·ñÕıÔÚ´òÓ¡²ÊÆ±.
         /// </summary>
         internal bool IsPrintCaiPiao = false;
         /// <summary>
-        /// å½©ç¥¨æ•°æ®ç¼“å­˜ä¿¡æ¯.
-        /// å½“å½©ç¥¨æœºå¤„äºæ‰“å°å½©ç¥¨æ—¶,æ–°åŠ è¿›æ¥çš„å½©ç¥¨æ•°æš‚æ—¶å­˜å…¥ç¼“å†²åŒºæ•°æ®é‡Œ,ç­‰å½©ç¥¨æœºæ‰“å°å®Œå½“å‰
-        /// å½©ç¥¨å,å†å»æ£€æŸ¥ç¼“å†²åŒºçš„å½©ç¥¨æ•°,æœ‰æ•°æ®åˆ™ç»§ç»­æ‰“å°ç¼“å†²åŒºå½©ç¥¨å¹¶å°†ç¼“å†²åŒºå½©ç¥¨æ¸…ç©º,æ²¡æœ‰
-        /// æ•°æ®åˆ™ä¸è¿›è¡Œä»»ä½•æ“ä½œ.
+        /// ²ÊÆ±Êı¾İ»º´æĞÅÏ¢.
+        /// µ±²ÊÆ±»ú´¦ÓÚ´òÓ¡²ÊÆ±Ê±,ĞÂ¼Ó½øÀ´µÄ²ÊÆ±ÊıÔİÊ±´æÈë»º³åÇøÊı¾İÀï,µÈ²ÊÆ±»ú´òÓ¡Íêµ±Ç°
+        /// ²ÊÆ±ºó,ÔÙÈ¥¼ì²é»º³åÇøµÄ²ÊÆ±Êı,ÓĞÊı¾İÔò¼ÌĞø´òÓ¡»º³åÇø²ÊÆ±²¢½«»º³åÇø²ÊÆ±Çå¿Õ,Ã»ÓĞ
+        /// Êı¾İÔò²»½øĞĞÈÎºÎ²Ù×÷.
         /// </summary>
         internal int CaiPiaoValCache = 0;
 
         /// <summary>
-        /// æ¸…ç†å½©ç¥¨æ•°æ®.
+        /// ÇåÀí²ÊÆ±Êı¾İ.
         /// </summary>
         public void ClearCaiPiaoData()
         {
@@ -1143,7 +1150,7 @@ public class SSCaiPiaoDataManage : SSGameMono
         }
     }
     /// <summary>
-    /// 3ä¸ªç©å®¶çš„å½©ç¥¨æ•°æ®ä¿¡æ¯.
+    /// 3¸öÍæ¼ÒµÄ²ÊÆ±Êı¾İĞÅÏ¢.
     /// </summary>
     internal PcvrPrintCaiPiaoData[] m_PcvrPrintCaiPiaoData = new PcvrPrintCaiPiaoData[3]
     {
@@ -1153,7 +1160,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     };
 
     /// <summary>
-    /// æ·»åŠ å½©ç¥¨ç»™ç©å®¶.
+    /// Ìí¼Ó²ÊÆ±¸øÍæ¼Ò.
     /// </summary>
     internal void AddCaiPiaoToPlayer(PlayerEnum indexPlayer, int caiPiao, GameCaiPiaoData.DeCaiState type, bool isPlayCaiPiaoNumAni = true)
     {
@@ -1164,12 +1171,19 @@ public class SSCaiPiaoDataManage : SSGameMono
             return;
         }
 
+        //test
+        //if (type != GameCaiPiaoData.DeCaiState.ZhanChe)
+        //{
+        //    return;
+        //}
+        //test
+
         if (type == GameCaiPiaoData.DeCaiState.JPBoss)
         {
             if (m_PcvrPrintCaiPiaoData[index].IsDaJiangCaiPiao == false)
             {
                 m_PcvrPrintCaiPiaoData[index].IsDaJiangCaiPiao = true;
-                //äº§ç”Ÿå½©ç¥¨å¤§å¥–UIç•Œé¢.
+                //²úÉú²ÊÆ±´ó½±UI½çÃæ.
                 if (SSUIRoot.GetInstance().m_GameUIManage != null)
                 {
                     SSUIRoot.GetInstance().m_GameUIManage.CreatCaiPiaoDaJiangPanel(indexPlayer, caiPiao);
@@ -1180,21 +1194,21 @@ public class SSCaiPiaoDataManage : SSGameMono
         XKGlobalData.GetInstance().SetTotalOutPrintCards(XKGlobalData.GetInstance().m_TotalOutPrintCards + caiPiao);
         if (m_PcvrPrintCaiPiaoData[index].IsPrintCaiPiao)
         {
-            //å½“å‰æœºä½æ­£åœ¨æ‰“å°å½©ç¥¨.
-            //å°†æ–°å¾—åˆ°çš„å½©ç¥¨å­˜å…¥ç¼“å†²åŒº.
+            //µ±Ç°»úÎ»ÕıÔÚ´òÓ¡²ÊÆ±.
+            //½«ĞÂµÃµ½µÄ²ÊÆ±´æÈë»º³åÇø.
             m_PcvrPrintCaiPiaoData[index].CaiPiaoValCache += caiPiao;
             if (isPlayCaiPiaoNumAni == true)
             {
-                //æœ‰æ’­æ”¾å½©ç¥¨æ•°å­—åŠ¨ç”»,ç­‰åŠ¨ç”»æ’­å®Œåœ¨æ›´æ–°å½©ç¥¨æ•°å­—UI.
+                //ÓĞ²¥·Å²ÊÆ±Êı×Ö¶¯»­,µÈ¶¯»­²¥ÍêÔÚ¸üĞÂ²ÊÆ±Êı×ÖUI.
             }
             else
             {
-                //æ²¡æœ‰æ’­æ”¾å½©ç¥¨æ•°å­—åŠ¨ç”»,ç›´æ¥æ›´æ–°å½©ç¥¨æ•°å­—UI.
+                //Ã»ÓĞ²¥·Å²ÊÆ±Êı×Ö¶¯»­,Ö±½Ó¸üĞÂ²ÊÆ±Êı×ÖUI.
                 if (SSUIRoot.GetInstance().m_GameUIManage != null)
                 {
-                    //æ˜¾ç¤ºç©å®¶å½©ç¥¨æ•°é‡.
+                    //ÏÔÊ¾Íæ¼Ò²ÊÆ±ÊıÁ¿.
                     SSUIRoot.GetInstance().m_GameUIManage.ShowPlayerCaiPiaoInfo(indexPlayer,
-                        m_PcvrPrintCaiPiaoData[index].CaiPiaoVal + m_PcvrPrintCaiPiaoData[index].CaiPiaoValCache);
+                        m_PcvrPrintCaiPiaoData[index].CaiPiaoVal + m_PcvrPrintCaiPiaoData[index].CaiPiaoValCache, false, true);
                 }
             }
             return;
@@ -1205,14 +1219,14 @@ public class SSCaiPiaoDataManage : SSGameMono
 
         //if (isPlayCaiPiaoNumAni == true)
         //{
-        //    //æœ‰æ’­æ”¾å½©ç¥¨æ•°å­—åŠ¨ç”»,ç­‰åŠ¨ç”»æ’­å®Œåœ¨æ›´æ–°å½©ç¥¨æ•°å­—UI.
+        //    //ÓĞ²¥·Å²ÊÆ±Êı×Ö¶¯»­,µÈ¶¯»­²¥ÍêÔÚ¸üĞÂ²ÊÆ±Êı×ÖUI.
         //}
         //else
         //{
-        //    //æ²¡æœ‰æ’­æ”¾å½©ç¥¨æ•°å­—åŠ¨ç”»,ç›´æ¥æ›´æ–°å½©ç¥¨æ•°å­—UI.
+        //    //Ã»ÓĞ²¥·Å²ÊÆ±Êı×Ö¶¯»­,Ö±½Ó¸üĞÂ²ÊÆ±Êı×ÖUI.
         //    if (SSUIRoot.GetInstance().m_GameUIManage != null)
         //    {
-        //        //æ˜¾ç¤ºç©å®¶å½©ç¥¨æ•°é‡.
+        //        //ÏÔÊ¾Íæ¼Ò²ÊÆ±ÊıÁ¿.
         //        SSUIRoot.GetInstance().m_GameUIManage.ShowPlayerCaiPiaoInfo(indexPlayer,
         //            m_PcvrPrintCaiPiaoData[index].CaiPiaoVal + m_PcvrPrintCaiPiaoData[index].CaiPiaoValCache);
         //    }
@@ -1222,12 +1236,60 @@ public class SSCaiPiaoDataManage : SSGameMono
             + ", addCaiPiao ====== " + caiPiao
             + ", coinToCaiPiao ==== " + XKGlobalData.GetInstance().m_CoinToCard);
 
-        //è¿™é‡Œæ·»åŠ pcvræ‰“å°å½©ç¥¨çš„æ¶ˆæ¯.
+        //ÕâÀïÌí¼Ópcvr´òÓ¡²ÊÆ±µÄÏûÏ¢.
+        StartCoroutine(DelayPrintPlayerCaiPiao(indexPlayer, caiPiao, type));
+        //pcvr.GetInstance().StartPrintPlayerCaiPiao(indexPlayer, caiPiao);
+    }
+
+    /// <summary>
+    /// ÑÓ³Ù´òÓ¡Íæ¼Ò²ÊÆ±.
+    /// </summary>
+    IEnumerator DelayPrintPlayerCaiPiao(PlayerEnum indexPlayer, int caiPiao, GameCaiPiaoData.DeCaiState type)
+    {
+        switch (type)
+        {
+            case GameCaiPiaoData.DeCaiState.JPBoss:
+            case GameCaiPiaoData.DeCaiState.ZhanChe:
+                {
+                    yield return new WaitForSeconds(3.3f);
+                    break;
+                }
+            default:
+                {
+                    yield return new WaitForSeconds(1.3f);
+                    break;
+                }
+        }
+        //ÕâÀïÌí¼Ópcvr´òÓ¡²ÊÆ±µÄÏûÏ¢.
         pcvr.GetInstance().StartPrintPlayerCaiPiao(indexPlayer, caiPiao);
     }
 
     /// <summary>
-    /// å¼€å§‹æ‰“å°ç¼“å†²åŒºå½©ç¥¨.
+    /// »ñÈ¡Íæ¼ÒÊÇ·ñ»¹ÓĞ²ÊÆ±Ã»ÓĞ´òÓ¡Íê.
+    /// </summary>
+    internal bool GetAllPlayerIsHaveCaiPiao()
+    {
+        if (XKGlobalData.IsFreeMode == true)
+        {
+            //Ãâ·ÑÄ£Ê½.
+            return false;
+        }
+
+        bool isHaveCaiPiao = false;
+        int length = m_PcvrPrintCaiPiaoData.Length;
+        for (int i = 0; i < length; i++)
+        {
+            if (m_PcvrPrintCaiPiaoData[i].CaiPiaoVal > 0 || m_PcvrPrintCaiPiaoData[i].CaiPiaoValCache > 0)
+            {
+                isHaveCaiPiao = true;
+                break;
+            }
+        }
+        return isHaveCaiPiao;
+    }
+
+    /// <summary>
+    /// ¿ªÊ¼´òÓ¡»º³åÇø²ÊÆ±.
     /// </summary>
     void StartPrintCaiPiaoCache(PlayerEnum indexPlayer)
     {
@@ -1240,24 +1302,24 @@ public class SSCaiPiaoDataManage : SSGameMono
 
         if (m_PcvrPrintCaiPiaoData[index].IsPrintCaiPiao)
         {
-            //å½“å‰æœºä½æ­£åœ¨æ‰“å°å½©ç¥¨.
+            //µ±Ç°»úÎ»ÕıÔÚ´òÓ¡²ÊÆ±.
             return;
         }
         m_PcvrPrintCaiPiaoData[index].IsPrintCaiPiao = true;
 
         int caiPiao = m_PcvrPrintCaiPiaoData[index].CaiPiaoValCache;
-        //æ¸…ç©ºç¼“å†²åŒºå½©ç¥¨æ•°é‡,é¿å…UIæ˜¾ç¤ºå½©ç¥¨æ•°ä¼šæ˜¾ç¤ºä¸ºç¼“å†²åŒºå½©ç¥¨æ•°çš„2å€.
+        //Çå¿Õ»º³åÇø²ÊÆ±ÊıÁ¿,±ÜÃâUIÏÔÊ¾²ÊÆ±Êı»áÏÔÊ¾Îª»º³åÇø²ÊÆ±ÊıµÄ2±¶.
         m_PcvrPrintCaiPiaoData[index].CaiPiaoValCache = 0;
-        //é‡ç½®å½©ç¥¨æ•°é‡ä¿¡æ¯.
+        //ÖØÖÃ²ÊÆ±ÊıÁ¿ĞÅÏ¢.
         m_PcvrPrintCaiPiaoData[index].CaiPiaoVal = caiPiao;
         //UnityLog("StartPrintCaiPiaoCache -> indexPlayer ====== " + indexPlayer + ", caiPiao ==== " + caiPiao);
 
-        //è¿™é‡Œæ·»åŠ pcvræ‰“å°å½©ç¥¨çš„æ¶ˆæ¯.
+        //ÕâÀïÌí¼Ópcvr´òÓ¡²ÊÆ±µÄÏûÏ¢.
         pcvr.GetInstance().StartPrintPlayerCaiPiao(indexPlayer, caiPiao);
     }
     
     /// <summary>
-    ///  å‡å°‘ç©å®¶å½©ç¥¨.
+    ///  ¼õÉÙÍæ¼Ò²ÊÆ±.
     /// </summary>
     internal void SubPlayerCaiPiao(PlayerEnum indexPlayer, int caiPiao)
     {
@@ -1279,11 +1341,11 @@ public class SSCaiPiaoDataManage : SSGameMono
 
         if (m_PcvrPrintCaiPiaoData[index].CaiPiaoVal <= 0)
         {
-            //å½©ç¥¨å·²ç»æ‰“å°å®Œæˆ.
+            //²ÊÆ±ÒÑ¾­´òÓ¡Íê³É.
             m_PcvrPrintCaiPiaoData[index].IsPrintCaiPiao = false;
             if (m_PcvrPrintCaiPiaoData[index].CaiPiaoValCache > 0)
             {
-                //å¼€å§‹æ‰“å°ç¼“å†²åŒºå½©ç¥¨.
+                //¿ªÊ¼´òÓ¡»º³åÇø²ÊÆ±.
                 StartPrintCaiPiaoCache(indexPlayer);
             }
         }
@@ -1293,13 +1355,13 @@ public class SSCaiPiaoDataManage : SSGameMono
 
         if (SSUIRoot.GetInstance().m_GameUIManage != null)
         {
-            //åˆ é™¤å½©ç¥¨ä¸è¶³UIç•Œé¢.
+            //É¾³ı²ÊÆ±²»×ãUI½çÃæ.
             SSUIRoot.GetInstance().m_GameUIManage.RemoveCaiPiaoBuZuPanel(indexPlayer, false);
         }
     }
 
     /// <summary>
-    /// è·å–ç©å®¶å½“å‰çš„å½©ç¥¨æ•°é‡.
+    /// »ñÈ¡Íæ¼Òµ±Ç°µÄ²ÊÆ±ÊıÁ¿.
     /// </summary>
     internal int GetPlayerCaiPiaoVal(PlayerEnum indexPlayer)
     {
@@ -1319,8 +1381,8 @@ public class SSCaiPiaoDataManage : SSGameMono
     }
 
     /// <summary>
-    /// å·¥ä½œäººå‘˜æ¸…ç†å½©ç¥¨ä¸è¶³æœºå°å½©ç¥¨æ•°æ®.
-    /// æ¸…ç†ç©å®¶å½©ç¥¨æ•°æ®ä¿¡æ¯.
+    /// ¹¤×÷ÈËÔ±ÇåÀí²ÊÆ±²»×ã»úÌ¨²ÊÆ±Êı¾İ.
+    /// ÇåÀíÍæ¼Ò²ÊÆ±Êı¾İĞÅÏ¢.
     /// </summary>
     internal void ClearPlayerCaiPiaoData(PlayerEnum indexPlayer)
     {
@@ -1331,9 +1393,9 @@ public class SSCaiPiaoDataManage : SSGameMono
             return;
         }
         UnityLog("ClearPlayerCaiPiaoData -> indexPlayer ======= " + indexPlayer);
-        //æ¸…ç†ç©å®¶å½©ç¥¨æ•°æ®.
+        //ÇåÀíÍæ¼Ò²ÊÆ±Êı¾İ.
         m_PcvrPrintCaiPiaoData[index].ClearCaiPiaoData();
-        //æ¸…ç†ç©å®¶pcvrå½©ç¥¨æ•°æ®.
+        //ÇåÀíÍæ¼Òpcvr²ÊÆ±Êı¾İ.
         pcvr.GetInstance().ClearCaiPiaoData(indexPlayer);
     }
 
@@ -1347,7 +1409,7 @@ public class SSCaiPiaoDataManage : SSGameMono
 
         if (Input.GetKeyUp(KeyCode.G))
         {
-            //å¡«å……å½©ç¥¨.
+            //Ìî³ä²ÊÆ±.
             TestAddCard();
         }
         TestUpdataPrintCard();
@@ -1368,7 +1430,7 @@ public class SSCaiPiaoDataManage : SSGameMono
     {
         if (TestCardNum <= 0)
         {
-            //æ²¡æœ‰å½©ç¥¨äº†.
+            //Ã»ÓĞ²ÊÆ±ÁË.
             return;
         }
 
@@ -1384,7 +1446,7 @@ public class SSCaiPiaoDataManage : SSGameMono
             TestCardNum--;
             if (TestCardNum <= 0)
             {
-                //æ²¡æœ‰å½©ç¥¨äº†.
+                //Ã»ÓĞ²ÊÆ±ÁË.
                 PcvrComInputEvent.GetInstance().OnCaiPiaJiWuPiao(pcvrTXManage.CaiPiaoJi.Num01);
             }
         }
@@ -1409,17 +1471,17 @@ public class SSCaiPiaoDataManage : SSGameMono
         {
             case pcvrTXManage.CaiPiaoPrintState.WuXiao:
                 {
-                    info += "æ— æ•ˆ";
+                    info += "ÎŞĞ§";
                     break;
                 }
             case pcvrTXManage.CaiPiaoPrintState.Failed:
                 {
-                    info += "å¤±è´¥";
+                    info += "Ê§°Ü";
                     break;
                 }
             case pcvrTXManage.CaiPiaoPrintState.Succeed:
                 {
-                    info += "æˆåŠŸ";
+                    info += "³É¹¦";
                     break;
                 }
         }
@@ -1430,17 +1492,17 @@ public class SSCaiPiaoDataManage : SSGameMono
         {
             case pcvrTXManage.CaiPiaoPrintState.WuXiao:
                 {
-                    info += "æ— æ•ˆ";
+                    info += "ÎŞĞ§";
                     break;
                 }
             case pcvrTXManage.CaiPiaoPrintState.Failed:
                 {
-                    info += "å¤±è´¥";
+                    info += "Ê§°Ü";
                     break;
                 }
             case pcvrTXManage.CaiPiaoPrintState.Succeed:
                 {
-                    info += "æˆåŠŸ";
+                    info += "³É¹¦";
                     break;
                 }
         }
@@ -1451,17 +1513,17 @@ public class SSCaiPiaoDataManage : SSGameMono
         {
             case pcvrTXManage.CaiPiaoPrintState.WuXiao:
                 {
-                    info += "æ— æ•ˆ";
+                    info += "ÎŞĞ§";
                     break;
                 }
             case pcvrTXManage.CaiPiaoPrintState.Failed:
                 {
-                    info += "å¤±è´¥";
+                    info += "Ê§°Ü";
                     break;
                 }
             case pcvrTXManage.CaiPiaoPrintState.Succeed:
                 {
-                    info += "æˆåŠŸ";
+                    info += "³É¹¦";
                     break;
                 }
         }
