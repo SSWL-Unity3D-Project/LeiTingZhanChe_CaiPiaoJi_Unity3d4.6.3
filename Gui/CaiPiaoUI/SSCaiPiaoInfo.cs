@@ -35,16 +35,52 @@ public class SSCaiPiaoInfo : SSGameMono
         }
     }
 
+    /// <summary>
+    /// 是否初始化彩票数字动画.
+    /// </summary>
     bool IsInitCaiPiaoAni = false;
+    int m_MaxCaiPiaoNumAni = 0;
+    int m_MinCaiPiaoNumAni = 0;
     float TimeCaiPiaoAni = 1f;
     float TimeLastCaiPiaoAni = 0f;
     PlayerEnum IndexPlayer = PlayerEnum.Null;
+    /// <summary>
+    /// 初始化彩票数字动画.
+    /// </summary>
     public void InitCaiPiaoAnimation(float timeVal, PlayerEnum indexPlayer)
     {
+        UnityLog("SSCaiPiaoInfo::InitCaiPiaoAnimation -> indexPlayer == " + indexPlayer
+            + ", time == " + Time.time);
         IndexPlayer = indexPlayer;
+
+        int indexVal = (int)indexPlayer - 1;
+        int caiPiao = XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.m_PcvrPrintCaiPiaoData[indexVal].CaiPiaoVal;
+        int caiPiaoCache = XkPlayerCtrl.GetInstanceFeiJi().m_SpawnNpcManage.m_CaiPiaoDataManage.m_PcvrPrintCaiPiaoData[indexVal].CaiPiaoValCache;
+        if (caiPiao + caiPiaoCache > 5)
+        {
+            timeVal = 0.8f;
+        }
+        else if (caiPiao + caiPiaoCache > 2)
+        {
+            timeVal = 0.5f;
+        }
+        else
+        {
+            timeVal = 0.2f;
+        }
         TimeCaiPiaoAni = timeVal;
         TimeLastCaiPiaoAni = Time.time;
+
+        int totalCaiPiao = caiPiao + caiPiaoCache;
+        m_MaxCaiPiaoNumAni = (int)(Mathf.Pow(10f, totalCaiPiao.ToString().Length) - 1f);
+        m_MinCaiPiaoNumAni = (int)Mathf.Pow(10f, totalCaiPiao.ToString().Length - 1);
         IsInitCaiPiaoAni = true;
+
+        if (m_GameNumUI != null)
+        {
+            //显示彩票数据UI信息.
+            m_GameNumUI.SetActive(true);
+        }
 
         if (m_AniAudio != null)
         {
@@ -115,10 +151,12 @@ public class SSCaiPiaoInfo : SSGameMono
         {
             if (Time.time - TimeLastCaiPiaoAni <= TimeCaiPiaoAni)
             {
-                m_GameNumUI.ShowNumUI(UnityEngine.Random.Range(1000, 9999));
+                m_GameNumUI.ShowNumUI(UnityEngine.Random.Range(m_MinCaiPiaoNumAni, m_MaxCaiPiaoNumAni));
             }
             else
             {
+                UnityLog("SSCaiPiaoInfo::CloseCaiPiaoAnimation -> indexPlayer == " + IndexPlayer
+                    + ", time == " + Time.time);
                 //结束彩票数字动画.
                 IsInitCaiPiaoAni = false;
                 if (SSUIRoot.GetInstance().m_GameUIManage != null)
@@ -133,7 +171,7 @@ public class SSCaiPiaoInfo : SSGameMono
                         if (SSUIRoot.GetInstance().m_GameUIManage != null)
                         {
                             //显示玩家彩票数量.
-                            SSUIRoot.GetInstance().m_GameUIManage.ShowPlayerCaiPiaoInfo(IndexPlayer, caiPiao + caiPiaoCache);
+                            SSUIRoot.GetInstance().m_GameUIManage.ShowPlayerCaiPiaoInfo(IndexPlayer, caiPiao + caiPiaoCache, false, true);
                         }
                     }
                 }
@@ -154,6 +192,11 @@ public class SSCaiPiaoInfo : SSGameMono
     {
         if (m_AnimationNumSuoFang != null)
         {
+            if (m_GameNumUI != null)
+            {
+                //显示彩票数据UI信息.
+                m_GameNumUI.SetActive(true);
+            }
             m_AnimationNumSuoFang.enabled = true;
             m_AnimationNumSuoFang.SetBool("IsPlay", true);
             StartCoroutine(DelayCloseCaiPiaoNumSuoFangAnimation());

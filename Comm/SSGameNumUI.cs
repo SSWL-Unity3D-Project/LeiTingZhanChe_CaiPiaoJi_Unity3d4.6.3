@@ -80,4 +80,10 @@ public class SSGameNumUI : SSGameMono
             }
         }
     }
+
+    internal void SetActive(bool isActive)
+    {
+        //UnityLog("SetActive -> isActive ====== " + isActive);
+        gameObject.SetActive(isActive);
+    }
 }

@@ -40,7 +40,7 @@ public class SSGameUICtrl : SSGameMono
         GameObject gmDataPrefab = (GameObject)Resources.Load("Prefabs/GUI/CaiPiaoUI/CaiPiaoZhuanPan");
         if (gmDataPrefab != null)
         {
-            UnityLog("CreatZhanCheBossCaiPiaoZhuanPan...");
+            //UnityLog("CreatZhanCheBossCaiPiaoZhuanPan...");
             GameObject obj = (GameObject)Instantiate(gmDataPrefab, m_GameUIBottomLeft);
             SSCaiPiaoZhanCheBossUI caiPiaoZhuanPan = obj.GetComponent<SSCaiPiaoZhanCheBossUI>();
             if (caiPiaoZhuanPan != null)
@@ -247,7 +247,7 @@ public class SSGameUICtrl : SSGameMono
             {
                 if (m_PlayerUIParent[index] != null)
                 {
-                    UnityLog("CreatCaiPiaoInfoPanel...");
+                    UnityLog("CreatCaiPiaoInfoPanel -> isShowCaiPiaoInfo == " + isShowCaiPiaoInfo);
                     GameObject obj = (GameObject)Instantiate(gmDataPrefab, m_PlayerUIParent[index]);
                     m_CaiPiaoInfoArray[index] = obj.GetComponent<SSGameNumUI>();
                     SetActiveZhengZaiChuPiaoUI(indexPlayer, true);
@@ -395,8 +395,21 @@ public class SSGameUICtrl : SSGameMono
 
             if (m_CaiPiaoInfoArray[index] != null)
             {
-                //显示彩票数量UI.
-                m_CaiPiaoInfoArray[index].ShowNumUI(num);
+                if (isShowCaiPiaoInfo == true)
+                {
+                    //显示彩票数量UI.
+                    m_CaiPiaoInfoArray[index].SetActive(true);
+                    m_CaiPiaoInfoArray[index].ShowNumUI(num);
+                }
+                else
+                {
+                    if (isPlayCaiPiaoNumAni == false)
+                    {
+                        //没有播放彩票缩放动画.
+                        //隐藏彩票数字.
+                        m_CaiPiaoInfoArray[index].SetActive(false);
+                    }
+                }
 
                 if (isPlayCaiPiaoNumAni == true)
                 {
@@ -554,4 +567,24 @@ public class SSGameUICtrl : SSGameMono
         }
     }
     internal SSCaiPiaoYanHua m_SSCaiPiaoYanHua;
+
+    bool IsCreatCompanyLogo = false;
+    /// <summary>
+    /// 创建公司Logo.
+    /// </summary>
+    public void CreateCompanyLogo()
+    {
+        if (IsCreatCompanyLogo == true)
+        {
+            return;
+        }
+        IsCreatCompanyLogo = true;
+
+        GameObject gmDataPrefab = (GameObject)Resources.Load("Prefabs/GUI/Logo/Logo");
+        if (gmDataPrefab != null)
+        {
+            UnityLog("CreateCompanyLogo...");
+            Instantiate(gmDataPrefab, m_GameUICenter);
+        }
+    }
 }
