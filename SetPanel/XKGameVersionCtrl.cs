@@ -3,7 +3,7 @@
 public class XKGameVersionCtrl : MonoBehaviour
 {
     UILabel VersionLB;
-    static string _GameVersion = "Version: 20180925";
+    static string _GameVersion = "Version: 20180928";
     public static string GameVersion
     {
         get
@@ -30,7 +30,8 @@ public class XKGameVersionCtrl : MonoBehaviour
         }
     }
 
-    bool IsInit = false;
+    public static bool IsInit = false;
+    bool IsCreatGameVersion = false;
     float m_LastDrawTime = 0f;
     public void Init()
     {
@@ -39,11 +40,17 @@ public class XKGameVersionCtrl : MonoBehaviour
             return;
         }
         IsInit = true;
+        IsCreatGameVersion = true;
         m_LastDrawTime = Time.time;
     }
 
     void OnGUI()
     {
+        if (IsCreatGameVersion == false)
+        {
+            return;
+        }
+
         if (IsInit == true)
         {
             if (Time.time - m_LastDrawTime < 15f)
@@ -55,7 +62,7 @@ public class XKGameVersionCtrl : MonoBehaviour
             }
             else
             {
-                IsInit = false;
+                //IsInit = false;
                 Destroy(this);
             }
         }
