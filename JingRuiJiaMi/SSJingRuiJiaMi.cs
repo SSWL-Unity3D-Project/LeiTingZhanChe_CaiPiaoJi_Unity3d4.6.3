@@ -1,12 +1,12 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class SSJingRuiJiaMi : MonoBehaviour
 {
 	/// <summary>
-	/// æ˜¯å¦å¼€å¯ç²¾é”åŠ å¯†æ ¡éªŒ.
+	/// ÊÇ·ñ¿ªÆô¾«Èñ¼ÓÃÜĞ£Ñé.
 	/// </summary>
-	static bool IsOpenJingRuiJiaMi = false;
+	public static bool IsOpenJingRuiJiaMi = true;
 	static SSJingRuiJiaMi _Instance;
 	public static SSJingRuiJiaMi GetInstance()
 	{
@@ -14,20 +14,38 @@ public class SSJingRuiJiaMi : MonoBehaviour
 	}
 
 	/// <summary>
-	/// åŠ å¯†æ£€æµ‹ä¸­UI.
+	/// ¼ÓÃÜ¼ì²âÖĞUI.
 	/// </summary>
 	public GameObject m_JiaMiJianCeUI;
 	GameObject m_JiaMiJianCeObj;
 	void Start()
 	{
 		_Instance = this;
-        XKGameVersionCtrl gmVersionCom = gameObject.AddComponent<XKGameVersionCtrl>();
-        if (gmVersionCom != null)
+        if (IsOpenJingRuiJiaMi == true && XKGameVersionCtrl.IsInit == false)
         {
-            gmVersionCom.Init();
+            XKGameVersionCtrl gmVersionCom = gameObject.AddComponent<XKGameVersionCtrl>();
+            if (gmVersionCom != null)
+            {
+                gmVersionCom.Init();
+            }
         }
 
+        bool isJiaoYanJingRui = false;
         if (IsOpenJingRuiJiaMi)
+        {
+            int val = PlayerPrefs.GetInt("JiaoYanJingRui");
+            if (val == 0)
+            {
+                isJiaoYanJingRui = true;
+            }
+            else
+            {
+                //×Ô¶¯ÖØÆôÓÎÏ·Ê±½«»á×Ô¶¯°ÑJiaoYanJingRuiÉèÖÃÎª1,±ÜÃâÖØ¸´Ğ£Ñé¼ÓÃÜ¹·.
+            }
+            PlayerPrefs.SetInt("JiaoYanJingRui", 0);
+        }
+
+        if (IsOpenJingRuiJiaMi && isJiaoYanJingRui)
 		{
 			CreatJiaMiJianCeUI();
 			StartJingRuiJiaMi();
@@ -39,7 +57,7 @@ public class SSJingRuiJiaMi : MonoBehaviour
 	}
 
 	/// <summary>
-	/// å®Œæ•´çš„ç²¾é”åŠ å¯†æ ¡éªŒ,åªéœ€è¦ä¸€æ¬¡æˆåŠŸå°±è¡Œ,åé¢æ ¡éªŒæ—¶ä¼šè®¤ä¸ºæ˜¯æˆåŠŸçš„.
+	/// ÍêÕûµÄ¾«Èñ¼ÓÃÜĞ£Ñé,Ö»ĞèÒªÒ»´Î³É¹¦¾ÍĞĞ,ºóÃæĞ£ÑéÊ±»áÈÏÎªÊÇ³É¹¦µÄ.
 	/// </summary>
 	void StartJingRuiJiaMi()
 	{
@@ -56,7 +74,7 @@ public class SSJingRuiJiaMi : MonoBehaviour
 	}
 
 	/// <summary>
-	/// åˆ›å»ºåŠ å¯†æ£€æµ‹UI.
+	/// ´´½¨¼ÓÃÜ¼ì²âUI.
 	/// </summary>
 	void CreatJiaMiJianCeUI()
 	{
@@ -67,7 +85,7 @@ public class SSJingRuiJiaMi : MonoBehaviour
 	}
 
 	/// <summary>
-	/// åˆ é™¤åŠ å¯†æ£€æµ‹UI.
+	/// É¾³ı¼ÓÃÜ¼ì²âUI.
 	/// </summary>
 	public void RemoveJiaMiJianCeUI()
 	{
@@ -78,7 +96,7 @@ public class SSJingRuiJiaMi : MonoBehaviour
 	}
 
 	/// <summary>
-	/// åŠ è½½æ¸¸æˆåœºæ™¯.
+	/// ¼ÓÔØÓÎÏ·³¡¾°.
 	/// </summary>
 	public void LoadGame()
 	{
@@ -86,7 +104,7 @@ public class SSJingRuiJiaMi : MonoBehaviour
 	}
 
     /// <summary>
-    /// æ¸¸æˆç»“æŸåè¿›è¡Œä¸€æ¬¡ç²¾é”4åŠ å¯†æ ¡éªŒ.
+    /// ÓÎÏ·½áÊøºó½øĞĞÒ»´Î¾«Èñ4¼ÓÃÜĞ£Ñé.
     /// </summary>
 	public static void OnGameOverCheckJingRuiJiaMi()
 	{
@@ -95,9 +113,9 @@ public class SSJingRuiJiaMi : MonoBehaviour
 			return;
 		}
 		
-		//è¿›å…¥å¾…æœºç”»é¢åšä¸€æ¬¡å®Œå…¨å®‰å…¨éªŒè¯
-		//å¦‚æœéªŒè¯å¤±è´¥äº†æ¸¸æˆå°±ä¼šè¢«æŒ‚èµ·
-		//åšæ ¡éªŒ
+		//½øÈë´ı»ú»­Ãæ×öÒ»´ÎÍêÈ«°²È«ÑéÖ¤
+		//Èç¹ûÑéÖ¤Ê§°ÜÁËÓÎÏ·¾Í»á±»¹ÒÆğ
+		//×öĞ£Ñé
 		GameRoot.CheckCipherText(StandbyProcess.VerifyEnvironmentKey_LogoVideo);
 	}
 }
